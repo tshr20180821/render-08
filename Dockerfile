@@ -7,7 +7,7 @@ RUN apt-get update \
   memcached \
  && apt-cache search memcached \
  && curl -o /tmp/php8.2-memcached_3.2.0+2.2.0-4_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/php-memcached/php8.2-memcached_3.2.0+2.2.0-4_amd64.deb \
- && dpkg -i /tmp/php8.2-memcached_3.2.0+2.2.0-4_amd64.deb \
+ && dpkg -i --force-depends /tmp/php8.2-memcached_3.2.0+2.2.0-4_amd64.deb \
  && dpkg --audit \
  && apt-get -f install \
  && dpkg --audit \
