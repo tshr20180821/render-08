@@ -14,11 +14,13 @@ RUN apt-get update \
  && a2enmod -q authz_groupfile rewrite \
  && ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
  && touch /var/www/html/index.html
- 
+
 COPY ./php.ini ${PHP_INI_DIR}/
 COPY ./apache.conf /etc/apache2/sites-enabled/
 COPY ./*.php /var/www/html/
 
 COPY ./start.sh /usr/src/app/
+
+RUN nproc 2>&1
  
 ENTRYPOINT ["bash","/usr/src/app/start.sh"]
