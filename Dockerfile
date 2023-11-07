@@ -5,11 +5,12 @@ WORKDIR /usr/src/app
 RUN apt-get update \
  && apt-get install -y \
   memcached \
+  psmisc \
  && apt-cache search memcached \
  && curl -o /tmp/php-common_93_all.deb http://ftp.jp.debian.org/debian/pool/main/p/php-defaults/php-common_93_all.deb \
  && dpkg -i --force-depends /tmp/php-common_93_all.deb \
  && dpkg --audit \
- && apt-get -f install \
+ && apt-get -y -f install \
  && dpkg --audit \
  && curl -o /tmp/php8.2-common_8.2.7-1~deb12u1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/php8.2/php8.2-common_8.2.7-1~deb12u1_amd64.deb \
  && dpkg -i --force-depends /tmp/php8.2-common_8.2.7-1~deb12u1_amd64.deb \
