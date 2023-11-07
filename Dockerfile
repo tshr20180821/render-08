@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 RUN apt-get update \
  && apt-get install -y \
   memcached \
-  php8.2-memcached \
+ && apt-cache search memcached \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && a2dissite -q 000-default.conf \
