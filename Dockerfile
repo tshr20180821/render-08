@@ -5,6 +5,7 @@ WORKDIR /usr/src/app
 RUN apt-get update \
  && apt-get install -y \
   memcached \
+  php8.2-common \
  && apt-cache search memcached \
  && curl -o /tmp/php8.2-memcached_3.2.0+2.2.0-4_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/php-memcached/php8.2-memcached_3.2.0+2.2.0-4_amd64.deb \
  && dpkg -i --force-depends /tmp/php8.2-memcached_3.2.0+2.2.0-4_amd64.deb \
@@ -25,5 +26,3 @@ COPY ./*.php /var/www/html/
 COPY ./start.sh /usr/src/app/
  
 ENTRYPOINT ["bash","/usr/src/app/start.sh"]
-
-# 
