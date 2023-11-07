@@ -6,6 +6,8 @@ RUN apt-get update \
  && apt-get install -y \
   memcached \
  && apt-cache search memcached \
+ && curl -o /tmp/php-common_93_all.deb http://ftp.jp.debian.org/debian/pool/main/p/php-defaults/php-common_93_all.deb \
+ && dpkg -i --force-depends /tmp/php-common_93_all.deb \
  && curl -o /tmp/php8.2-common_8.2.7-1~deb12u1_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/php8.2/php8.2-common_8.2.7-1~deb12u1_amd64.deb \
  && dpkg -i --force-depends /tmp/php8.2-common_8.2.7-1~deb12u1_amd64.deb \
  && curl -o /tmp/php8.2-memcached_3.2.0+2.2.0-4_amd64.deb http://ftp.jp.debian.org/debian/pool/main/p/php-memcached/php8.2-memcached_3.2.0+2.2.0-4_amd64.deb \
