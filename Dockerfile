@@ -7,8 +7,8 @@ RUN apt-get update \
   memcached \
   libmemcached-dev zlib1g-dev libssl-dev \
  && apt-cache search memcached \
- && docker-php-ext-configure memcached \
- && docker-php-ext-install memcached \
+ && pecl install -f memcached-3.2.0 \
+ && docker-php-ext-enable memcached \
  && apt-get -y -f install \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
