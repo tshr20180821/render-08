@@ -2,6 +2,10 @@ FROM php:8.2-apache
 
 WORKDIR /usr/src/app
 
+ENV CFLAGS="-O2 -march=native -mtune=native -fomit-frame-pointer"
+ENV CXXFLAGS="$CFLAGS"
+ENV LDFLAGS="-fuse-ld=gold"
+
 RUN apt-get update \
  && apt-get install -y \
   memcached \
@@ -21,6 +25,4 @@ COPY ./*.php /var/www/html/
 
 COPY ./start.sh /usr/src/app/
 
-RUN nproc 2>&1
- 
 ENTRYPOINT ["bash","/usr/src/app/start.sh"]
