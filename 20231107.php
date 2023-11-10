@@ -7,6 +7,7 @@ $m->setOption(Memcached::OPT_BINARY_PROTOCOL, true);
 error_log($m->getResultCode());
 error_log($m->getResultMessage());
 
+$m->setSaslAuthData('memcached', getenv('RENDER_EXTERNAL_HOSTNAME'));
 $m->addServer('127.0.0.1', 11211);
 error_log($m->getResultCode());
 error_log($m->getResultMessage());
