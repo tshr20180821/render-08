@@ -11,6 +11,7 @@ saslpasswd2 --help
 # echo ${RENDER_EXTERNAL_HOSTNAME} | saslpasswd2 -p -f /tmp/memcached.sasldb -a memcached -c memcached
 echo ${RENDER_EXTERNAL_HOSTNAME} | saslpasswd2 -p -a memcached -c memcached
 # chown memcached:memcached /tmp/memcached.sasldb
+chown memcached:memcached /etc/sasldb2
 # cat /tmp/memcached.sasldb
 sasldblistusers2
 # export MEMCACHED_SASL_PWDB=/tmp/memcached.sasldb
