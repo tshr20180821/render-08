@@ -10,6 +10,7 @@ saslpasswd2 --help
 echo ${RENDER_EXTERNAL_HOSTNAME} | saslpasswd2 -p -f /tmp/memcached.sasldb -a memcached -c memcached
 chown memcached:memcached /tmp/memcached.sasldb
 # cat /tmp/memcached.sasldb
+sasldblistusers2
 export MEMCACHED_SASL_PWDB=/tmp/memcached.sasldb
 
 echo "mech_list: login plain anonymous ntlm scram cram-md5 digest-md5" >/tmp/memcached.conf
