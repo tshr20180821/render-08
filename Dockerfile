@@ -26,6 +26,4 @@ COPY ./*.php /var/www/html/
 
 COPY ./start.sh /usr/src/app/
 
-RUN find / -name *memcached* -print
-
 ENTRYPOINT ["bash","/usr/src/app/start.sh"]
