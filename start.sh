@@ -15,7 +15,7 @@ sasldblistusers2
 export MEMCACHED_SASL_PWDB=/tmp/memcached.sasldb
 
 export SASL_CONF_PATH=/tmp/memcached.conf
-echo "mech_list: plain cram-md5" >/tmp/memcached.conf
+echo "mech_list: login plain anonymous ntlm scram cram-md5 digest-md5" >/tmp/memcached.conf
 # echo "mech_list: login plain anonymous ntlm scram cram-md5 digest-md5" >/tmp/memcached.conf
 echo "sasldb_path: /tmp/memcached.sasldb" >>/tmp/memcached.conf
 cat /tmp/memcached.conf
