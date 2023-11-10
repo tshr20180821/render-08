@@ -4,6 +4,8 @@ set -x
 
 # dpkg -l
 
+ldd `which memcached` | grep -i sasl
+
 # find / -name memcached.conf -print
 cat /etc/memcached.conf
 # sasldb_path: /tmp/memcached.sasldb
