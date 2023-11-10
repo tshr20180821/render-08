@@ -1,12 +1,12 @@
 <?php
 
-error_log('TEST');
+error_log('START');
 
-$mem_info = 'memory_get_usage true : ' . number_format(memory_get_usage(true))
-    . "\nmemory_get_usage false : " . number_format(memory_get_usage())
-    . "\nmemory_get_peak_usage true : " . number_format(memory_get_peak_usage(true))
-    . "\nmemory_get_peak_usage false : " . number_format(memory_get_peak_usage());
+$m = new Memcached();
+$m->addServer('127.0.0.1');
 
-file_put_contents('php://stderr', "{$mem_info}\n");
+$m->set('KEY_A', 'DATA_A');
 
-echo 'TEST';
+echo $m->get('KEY_A');
+
+error_log('FINISH');
