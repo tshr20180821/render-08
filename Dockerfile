@@ -9,6 +9,7 @@ ENV LDFLAGS="-fuse-ld=gold"
 RUN apt-get update \
  && apt-get install -y \
   memcached \
+  sasl2-bin \
   libmemcached-dev zlib1g-dev libssl-dev \
  && MAKEFLAGS="-j $(nproc)" pecl install memcached \
  && docker-php-ext-enable memcached \
