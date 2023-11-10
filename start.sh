@@ -14,10 +14,11 @@ export MEMCACHED_SASL_PWDB=/tmp/memcached.sasldb
 
 echo "mech_list: plain cram-md5" >/tmp/memcached.conf
 echo "sasldb_path: /tmp/test-memcached.sasldb" >>/tmp/memcached.conf
+cat /tmp/memcached.conf
 
 export SASL_CONF_PATH=/tmp/memcached.conf
-cat /etc/memcached.conf
-/usr/bin/memcached -S -vvvv -B binary -d -u memcached
+
+/usr/bin/memcached -S -v -B binary -d -u memcached
 
 echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_name.conf
 
