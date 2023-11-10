@@ -4,7 +4,8 @@ set -x
 
 # dpkg -l
 
-find / -name memcached.conf -print
+# find / -name memcached.conf -print
+cat /etc/memcached.conf
 
 /usr/bin/memcached --help
 useradd memcached -G sasl
