@@ -4,6 +4,8 @@ set -x
 
 dpkg -l
 
+getsebool -a
+
 /usr/bin/memcached --help
 /usr/bin/memcached -vvv -B binary -d -u memcache
 
