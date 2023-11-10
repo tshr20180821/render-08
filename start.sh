@@ -12,7 +12,7 @@ chown memcached:memcached /tmp/memcached.sasldb
 # cat /tmp/memcached.sasldb
 export MEMCACHED_SASL_PWDB=/tmp/memcached.sasldb
 
-echo "mech_list: plain cram-md5" >/tmp/memcached.conf
+echo "mech_list: cram-md5 digest-md5 login plain" >/tmp/memcached.conf
 echo "sasldb_path: /tmp/memcached.sasldb" >>/tmp/memcached.conf
 cat /tmp/memcached.conf
 
