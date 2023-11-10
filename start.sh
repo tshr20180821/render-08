@@ -4,10 +4,6 @@ set -x
 
 # dpkg -l
 
-ldd `which memcached` | grep -i sasl
-
-find / -name *memcached* -print
-
 /usr/bin/memcached --help
 useradd memcached -G sasl
 saslpasswd2 --help
