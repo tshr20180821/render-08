@@ -20,7 +20,7 @@ echo "mech_list: plain cram-md5" >/tmp/memcached.conf
 echo "sasldb_path: /tmp/memcached.sasldb" >>/tmp/memcached.conf
 cat /tmp/memcached.conf
 /usr/sbin/saslauthd --help
-/usr/sbin/saslauthd -a sasldb
+/usr/sbin/saslauthd -a sasldb -V
 
 testsaslauthd -u memcached -p ${RENDER_EXTERNAL_HOSTNAME}
 
