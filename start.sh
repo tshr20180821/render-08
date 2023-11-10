@@ -9,7 +9,8 @@ useradd memcached -G sasl
 saslpasswd2 --help
 echo ${RENDER_EXTERNAL_HOSTNAME} | saslpasswd2 -p -a memcached -c memcached -f /tmp/memcached.sasldb
 chown memcached:memcached /tmp/memcached.sasldb
-MEMCACHED_SASL_PWDB=/tmp/memcached.sasldb /usr/bin/memcached -S -vvvv -B binary -d -u memcached
+export MEMCACHED_SASL_PWDB=/tmp/memcached.sasldb
+/usr/bin/memcached -S -vvvv -B binary -d -u memcached
 
 echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_name.conf
 
