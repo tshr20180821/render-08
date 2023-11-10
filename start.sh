@@ -4,7 +4,6 @@ set -x
 
 # dpkg -l
 
-whereis saslauthd
 
 /usr/bin/memcached --help
 useradd memcached -G sasl
@@ -15,14 +14,15 @@ chown memcached:memcached /tmp/memcached.sasldb
 sasldblistusers2
 export MEMCACHED_SASL_PWDB=/tmp/memcached.sasldb
 
-testsaslauthd -u memcached -p ${RENDER_EXTERNAL_HOSTNAME}
-
-# echo "mech_list: login plain anonymous ntlm scram cram-md5 digest-md5" >/tmp/memcached.conf
+export SASL_CONF_PATH=/tmp/memcached.conf
 echo "mech_list: plain cram-md5" >/tmp/memcached.conf
+# echo "mech_list: login plain anonymous ntlm scram cram-md5 digest-md5" >/tmp/memcached.conf
 echo "sasldb_path: /tmp/memcached.sasldb" >>/tmp/memcached.conf
 cat /tmp/memcached.conf
+/usr/sbin/saslauthd --help
+/usr/sbin/saslauthd -a sasldb
 
-export SASL_CONF_PATH=/tmp/memcached.conf
+testsaslauthd -u memcached -p ${RENDER_EXTERNAL_HOSTNAME}
 
 /usr/bin/memcached -S -v -B binary -d -u memcached
 
