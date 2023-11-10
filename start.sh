@@ -6,7 +6,7 @@ set -x
 
 ldd `which memcached` | grep -i sasl
 
-# find / -name memcached.conf -print
+find / -name *memcached* -print
 cat /etc/memcached.conf
 # sasldb_path: /tmp/memcached.sasldb
 echo "sasldb_path: /tmp/memcached.sasldb" >>/etc/memcached.conf
