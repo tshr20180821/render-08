@@ -8,6 +8,7 @@ ENV LDFLAGS="-fuse-ld=gold"
 
 RUN apt-get update \
  && apt-get install -y \
+  libsasl2-modules \
   memcached \
   sasl2-bin \
   libmemcached-dev zlib1g-dev libssl-dev \
