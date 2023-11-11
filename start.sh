@@ -4,7 +4,7 @@ set -x
 
 # dpkg -l
 
-cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -c 15-
+cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -c 14-
 
 /usr/bin/memcached --help
 useradd memcached -G sasl
