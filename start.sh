@@ -4,7 +4,7 @@ set -x
 
 # dpkg -l
 
-cat /etc/sasl2/saslauthd.conf
+find / -name saslauthd.conf -print
 
 /usr/bin/memcached --help
 useradd memcached -G sasl
