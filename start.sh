@@ -6,21 +6,22 @@ set -x
 
 /usr/bin/memcached --help
 useradd memcached -G sasl
-saslpasswd2 --help
-export SASL_DB_PATH=/tmp/memcached.sasldb
-echo ${RENDER_EXTERNAL_HOSTNAME} | saslpasswd2 -p -f ${SASL_DB_PATH} -a memcached -c memcached
-# echo ${RENDER_EXTERNAL_HOSTNAME} | saslpasswd2 -p -a memcached -c memcached
-chown memcached:memcached /tmp/memcached.sasldb
-# chown memcached:memcached /etc/sasldb2
+# saslpasswd2 --help
+# export SASL_DB_PATH=/tmp/memcached.sasldb
+# echo ${RENDER_EXTERNAL_HOSTNAME} | saslpasswd2 -p -f ${SASL_DB_PATH} -a memcached -c memcached
+echo ${RENDER_EXTERNAL_HOSTNAME} | saslpasswd2 -p -a memcached -c memcached
+# chown memcached:memcached /tmp/memcached.sasldb
+chown memcached:memcached /etc/sasldb2
+chomod 640 /etc/sasldb2
 sasldblistusers2
-export MEMCACHED_SASL_PWDB=/tmp/memcached.sasldb
+# export MEMCACHED_SASL_PWDB=/tmp/memcached.sasldb
 
 export SASL_CONF_PATH=/tmp/memcached.conf
 echo "mech_list: plain cram-md5" >/tmp/memcached.conf
 # echo "mech_list: login plain anonymous ntlm scram cram-md5 digest-md5" >/tmp/memcached.conf
-echo "sasldb_path: /tmp/memcached.sasldb" >>/tmp/memcached.conf
+# echo "sasldb_path: /tmp/memcached.sasldb" >>/tmp/memcached.conf
 cat /tmp/memcached.conf
-/usr/sbin/saslauthd --help
+# /usr/sbin/saslauthd --help
 # export SASL_DB_PATH=/tmp/dummy.sasldb
 /usr/sbin/saslauthd -a sasldb -V
 
