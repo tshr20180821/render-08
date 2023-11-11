@@ -4,8 +4,6 @@ set -x
 
 # dpkg -l
 
-find / -name saslauthd.conf -print
-
 /usr/bin/memcached --help
 useradd memcached -G sasl
 saslpasswd2 --help
