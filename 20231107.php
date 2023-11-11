@@ -12,6 +12,8 @@ $m->addServer('127.0.0.1', 11211);
 error_log($m->getResultCode());
 error_log($m->getResultMessage());
 
+error_log('DATA2 : ' . $m->get('KEY_B'));
+
 $m->set('KEY_A', 'DATA_A');
 error_log($m->getResultCode());
 error_log($m->getResultMessage());
