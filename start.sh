@@ -4,9 +4,6 @@ set -x
 
 # dpkg -l
 
-processor_name=$(cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -c 14-)
-echo ${#processor_name}
-
 /usr/bin/memcached --help
 useradd memcached -G sasl
 saslpasswd2 --help
