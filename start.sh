@@ -4,6 +4,8 @@ set -x
 
 # dpkg -l
 
+cat /proc/cpuinfo
+
 /usr/bin/memcached --help
 useradd memcached -G sasl
 saslpasswd2 --help
