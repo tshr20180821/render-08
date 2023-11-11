@@ -12,6 +12,7 @@ RUN apt-get update \
   sasl2-bin \
   libsasl2-modules \
   libmemcached-dev zlib1g-dev libssl-dev \
+  telnet \
  && MAKEFLAGS="-j $(nproc)" pecl install memcached --enable-memcached-sasl \
  && docker-php-ext-enable memcached \
  && apt-get clean \
