@@ -13,7 +13,7 @@ echo ${RENDER_EXTERNAL_HOSTNAME} | saslpasswd2 -p -a memcached -c memcached
 # chown memcached:memcached /tmp/memcached.sasldb
 chown memcached:memcached /etc/sasldb2
 ls -lang /etc/sasldb2
-chomod 640 /etc/sasldb2
+# chomod 640 /etc/sasldb2
 sasldblistusers2
 # export MEMCACHED_SASL_PWDB=/tmp/memcached.sasldb
 
