@@ -2,10 +2,6 @@ FROM php:8.2-apache
 
 WORKDIR /usr/src/app
 
-ENV CFLAGS="-O2 -march=native -mtune=native -fomit-frame-pointer"
-ENV CXXFLAGS="$CFLAGS"
-ENV LDFLAGS="-fuse-ld=gold"
-
 RUN dpkg -l \
  && apt-get update \
  && apt-get install -y \
