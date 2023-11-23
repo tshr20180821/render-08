@@ -70,7 +70,7 @@ pushd libevent-2.1.12-stable
 
 ./configure --help
 
-./configure --enable-sasl --enable-sasl-pwdb --enable-static --enable-64bit --disable-docs
+./configure --disable-shared
 
 make
 
@@ -94,7 +94,7 @@ pushd memcached-1.6.22
 
 ./configure --help
 
-./configure
+./configure --enable-sasl --enable-sasl-pwdb --enable-static --enable-64bit --disable-docs
 
 make
 
