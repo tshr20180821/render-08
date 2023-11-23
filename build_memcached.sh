@@ -102,6 +102,7 @@ make install
 
 popd
 
-find / -name memcached -print
+ldd /usr/local/bin/memcached
+cp /usr/local/bin/memcached /var/www/html/
 
 popd
