@@ -10,7 +10,7 @@ RUN dpkg -l \
  && apt-get update \
  && apt-get install -y \
   ccache \
-  libbz2-dev \
+  lbzip2 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && a2dissite -q 000-default.conf \
