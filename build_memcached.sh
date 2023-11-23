@@ -86,11 +86,11 @@ mv ccache_cache.tar.bz2 /var/www/html/
 popd
 rm -rf /tmp/ccache_cache
 
-curl -O https://ftp.gnu.org/gnu/gsasl/gsasl-2.2.0.tar.gz
+curl -O https://ftp.gnu.org/gnu/gsasl/libgsasl-1.10.0.tar.gz
 
-tar xf gsasl-2.2.0.tar.gz
+tar xf libgsasl-1.10.0.tar.gz
 
-pushd gsasl-2.2.0
+pushd libgsasl-1.10.0
 
 ./configure --help
 
