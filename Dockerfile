@@ -7,6 +7,7 @@ RUN dpkg -l \
  && apt-get install -y \
   ccache \
   lbzip2 \
+  libsasl2-dev \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && a2dissite -q 000-default.conf \
