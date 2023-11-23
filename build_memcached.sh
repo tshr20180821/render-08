@@ -56,6 +56,10 @@ ccache -s
 # popd
 # rm -rf /tmp/ccache_cache
 
+find / -name openssl.pc -print
+
+exit
+
 curl -LO https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
 
 tar xf libevent-2.1.12-stable.tar.gz
