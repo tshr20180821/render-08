@@ -44,7 +44,7 @@ ls -lang
 
 make
 
-make install
+make install_sw
 
 popd
 
