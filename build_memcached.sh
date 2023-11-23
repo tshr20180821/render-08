@@ -44,17 +44,17 @@ ls -lang
 
 make
 
+make install
+
 popd
 
 ccache -s
 
-pushd /tmp
-tar cf ccache_cache.tar.bz2 --use-compress-prog=lbzip2 ./ccache_cache
-mv ccache_cache.tar.bz2 /var/www/html/
-popd
-rm -rf /tmp/ccache_cache
-
-exit
+# pushd /tmp
+# tar cf ccache_cache.tar.bz2 --use-compress-prog=lbzip2 ./ccache_cache
+# mv ccache_cache.tar.bz2 /var/www/html/
+# popd
+# rm -rf /tmp/ccache_cache
 
 curl -LO https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
 
