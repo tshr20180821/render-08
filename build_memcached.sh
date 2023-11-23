@@ -14,9 +14,9 @@ pushd openssl-3.1.4
 
 ls -lang
 
-./configure --help
+./Configure --help
 
-./configure
+./Configure
 
 make
 
