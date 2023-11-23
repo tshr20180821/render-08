@@ -4,6 +4,22 @@ set -e
 
 pushd /tmp
 
+curl -LO https://www.openssl.org/source/openssl-3.1.4.tar.gz
+
+tar xf openssl-3.1.4.tar.gz
+
+pushd openssl-3.1.4
+
+./configure --help
+
+./configure
+
+make
+
+popd
+
+exit
+
 curl -LO https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
 
 tar xf libevent-2.1.12-stable.tar.gz
