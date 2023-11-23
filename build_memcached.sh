@@ -86,8 +86,6 @@ mv ccache_cache.tar.bz2 /var/www/html/
 popd
 rm -rf /tmp/ccache_cache
 
-exit
-
 curl -O https://memcached.org/files/memcached-1.6.22.tar.gz
 
 tar xf memcached-1.6.22.tar.gz
