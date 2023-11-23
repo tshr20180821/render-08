@@ -86,21 +86,14 @@ mv ccache_cache.tar.bz2 /var/www/html/
 popd
 rm -rf /tmp/ccache_cache
 
-curl -O https://ftp.gnu.org/gnu/gsasl/libgsasl-1.10.0.tar.gz
-
-tar xf libgsasl-1.10.0.tar.gz
-
-pushd libgsasl-1.10.0
-
-./configure --help
-
-./configure
-
-make
-
-make install
-
-popd
+# curl -O https://ftp.gnu.org/gnu/gsasl/libgsasl-1.10.0.tar.gz
+# tar xf libgsasl-1.10.0.tar.gz
+# pushd libgsasl-1.10.0
+# ./configure --help
+# ./configure
+# make
+# make install
+# popd
 
 curl -O https://memcached.org/files/memcached-1.6.22.tar.gz
 
