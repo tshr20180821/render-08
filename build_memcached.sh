@@ -10,7 +10,7 @@ tar xf libevent-2.1.12-stable.tar.gz
 
 ls -lang
 
-pushd libevent-2.1.12
+pushd libevent-2.1.12-stable
 
 ./configure --help
 
