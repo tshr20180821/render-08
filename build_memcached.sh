@@ -8,7 +8,11 @@ curl -LO https://www.openssl.org/source/openssl-3.1.4.tar.gz
 
 tar xf openssl-3.1.4.tar.gz
 
+ls -lang
+
 pushd openssl-3.1.4
+
+ls -lang
 
 ./configure --help
 
