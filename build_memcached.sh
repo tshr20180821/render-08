@@ -2,6 +2,21 @@
 
 set -e
 
+
+export CCACHE_DIR=/tmp/ccache_cache
+export PATH="/tmp/usr/bin:${PATH}"
+
+pushd /tmp/usr/bin
+ln -s ccache gcc
+ln -s ccache g++
+ln -s ccache cc
+ln -s ccache c++
+popd
+
+ccache --version
+ccache -s
+ccache -z
+
 pushd /tmp
 
 curl -LO https://www.openssl.org/source/openssl-3.1.4.tar.gz
@@ -21,6 +36,8 @@ ls -lang
 make
 
 popd
+
+ccache -s
 
 exit
 
