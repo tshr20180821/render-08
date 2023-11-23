@@ -9,5 +9,5 @@ echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_n
 cp ./build_memcached.sh /tmp/
 time /tmp/build_memcached.sh &
 
-. /etc/apache2/envvars 2>&1 >/dev/null
+. /etc/apache2/envvars >/dev/null 2>&1
 exec /usr/sbin/apache2 -DFOREGROUND
