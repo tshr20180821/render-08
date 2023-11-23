@@ -9,7 +9,7 @@ ENV LDFLAGS="-fuse-ld=gold"
 RUN dpkg -l \
  && apt-get update \
  && apt-get install -y \
-  make \
+  ccache \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && a2dissite -q 000-default.conf \
@@ -23,8 +23,8 @@ COPY ./*.php /var/www/html/
 
 COPY ./start.sh /usr/src/app/
 
-COPY --chmod=755 ./build_memcached.sh /usr/src/app/
+COPY --chmod=755 ./build_memcached.sh /tmp/
 
-# RUN /tmp/build_memcached.sh
+RUN time /tmp/build_memcached.sh
 
 ENTRYPOINT ["bash","/usr/src/app/start.sh"]
