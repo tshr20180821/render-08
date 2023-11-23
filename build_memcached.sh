@@ -2,7 +2,7 @@
 
 set -e
 
-export CCACHE_DIR=/var/www/html/ccache_cache
+export CCACHE_DIR=/tmp/ccache_cache
 export PATH="/tmp/usr/bin:${PATH}"
 
 whereis ccache
@@ -19,6 +19,7 @@ popd
 ccache --version
 ccache -s
 ccache -z
+ccache -M 500M
 
 pushd /tmp
 
@@ -41,6 +42,11 @@ make
 popd
 
 ccache -s
+
+pushd /tmp
+tar cf ccache_cache.tar.bz2 --use-compress-prog=lbzip2 ./ccache_cache
+mv ccache_cache.tar.bz2 /var/www/html/
+popd
 
 exit
 
