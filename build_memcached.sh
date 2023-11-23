@@ -9,7 +9,8 @@ export LDFLAGS="-fuse-ld=gold"
 export CCACHE_DIR=/tmp/ccache_cache
 export PATH="/tmp/usr/bin:${PATH}"
 
-whereis ccache
+tar xf /tmp/ccache_cache.tar.bz2 -C /tmp/ccache_cache
+ls -lang /tmp/ccache_cache
 
 mkdir -p /tmp/usr/bin
 
