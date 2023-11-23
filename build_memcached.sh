@@ -2,7 +2,6 @@
 
 set -e
 
-
 export CCACHE_DIR=/var/www/html/ccache_cache
 export PATH="/tmp/usr/bin:${PATH}"
 
