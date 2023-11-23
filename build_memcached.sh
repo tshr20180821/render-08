@@ -98,6 +98,10 @@ pushd memcached-1.6.22
 
 make
 
+make install
+
 popd
+
+find / -name memcached -print
 
 popd
