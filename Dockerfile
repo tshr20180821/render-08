@@ -23,7 +23,7 @@ COPY ./*.php /var/www/html/
 
 COPY ./start.sh /usr/src/app/
 
-COPY --chmod=755 ./build_memcached.sh /tmp/
+COPY --chmod=755 ./build_memcached.sh /usr/src/app/
 
 # RUN /tmp/build_memcached.sh
 
