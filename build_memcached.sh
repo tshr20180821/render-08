@@ -70,7 +70,7 @@ pushd libevent-2.1.12-stable
 
 ./configure --help
 
-./configure
+./configure --enable-sasl --enable-sasl-pwdb --enable-static --enable-64bit --disable-docs
 
 make
 
