@@ -25,6 +25,6 @@ COPY ./start.sh /usr/src/app/
 
 COPY --chmod=755 ./build_memcached.sh /tmp/
 
-RUN /tmp/build_memcached.sh
+# RUN /tmp/build_memcached.sh
 
 ENTRYPOINT ["bash","/usr/src/app/start.sh"]
