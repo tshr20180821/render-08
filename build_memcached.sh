@@ -10,10 +10,10 @@ whereis ccache
 mkdir -p /tmp/usr/bin
 
 pushd /tmp/usr/bin
-ln -s ccache gcc
-ln -s ccache g++
-ln -s ccache cc
-ln -s ccache c++
+ln -s /usr/bin/ccache gcc
+ln -s /usr/bin/ccache g++
+ln -s /usr/bin/ccache cc
+ln -s /usr/bin/ccache c++
 popd
 
 ccache --version
