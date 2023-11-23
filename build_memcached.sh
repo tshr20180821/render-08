@@ -52,6 +52,7 @@ pushd /tmp
 tar cf ccache_cache.tar.bz2 --use-compress-prog=lbzip2 ./ccache_cache
 mv ccache_cache.tar.bz2 /var/www/html/
 popd
+rm -rf /tmp/ccache_cache
 
 exit
 
