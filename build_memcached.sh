@@ -3,7 +3,7 @@
 set -e
 
 
-export CCACHE_DIR=/tmp/ccache_cache
+export CCACHE_DIR=/var/www/html/ccache_cache
 export PATH="/tmp/usr/bin:${PATH}"
 
 pushd /tmp/usr/bin
