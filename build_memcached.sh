@@ -103,7 +103,8 @@ pushd memcached-1.6.22
 
 ./configure --help
 
-./configure --enable-sasl --enable-sasl-pwdb --enable-static --enable-64bit --disable-docs
+# ./configure --enable-sasl --enable-sasl-pwdb --enable-static --enable-64bit --disable-docs
+./configure --enable-sasl --enable-sasl-pwdb --enable-64bit --disable-docs
 
 make
 
