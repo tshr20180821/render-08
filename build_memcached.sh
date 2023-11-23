@@ -2,6 +2,10 @@
 
 set -e
 
+export CFLAGS="-O2 -march=native -mtune=native -fomit-frame-pointer"
+export CXXFLAGS="$CFLAGS"
+export LDFLAGS="-fuse-ld=gold"
+
 export CCACHE_DIR=/tmp/ccache_cache
 export PATH="/tmp/usr/bin:${PATH}"
 
