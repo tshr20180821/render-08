@@ -72,6 +72,14 @@ make
 
 popd
 
+ccache -s
+
+pushd /tmp
+tar cf ccache_cache.tar.bz2 --use-compress-prog=lbzip2 ./ccache_cache
+mv ccache_cache.tar.bz2 /var/www/html/
+popd
+rm -rf /tmp/ccache_cache
+
 curl -O https://memcached.org/files/memcached-1.6.22.tar.gz
 
 tar xf memcached-1.6.22.tar.gz
