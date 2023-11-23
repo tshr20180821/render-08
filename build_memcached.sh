@@ -58,7 +58,8 @@ ccache -s
 
 # find / -name openssl.pc -print
 
-export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig;${PKG_CONFIG_PATH}
+echo ${PKG_CONFIG_PATH}
+export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig/;${PKG_CONFIG_PATH}
 
 curl -LO https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
 
