@@ -10,7 +10,7 @@ for i in {1..60} ; do sleep 120s && ps aux && curl https://${RENDER_EXTERNAL_HOS
 # cp ./build_memcached.sh /tmp/
 # time /tmp/build_memcached.sh &
 cp ./build_apache2.sh /tmp/
-time /tmp/build_apache2.sh &
+time /tmp/build_apache2.sh | tee -a /var/www/html/build_log.txt &
 
 . /etc/apache2/envvars >/dev/null 2>&1
 exec /usr/sbin/apache2 -DFOREGROUND
