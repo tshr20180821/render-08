@@ -26,7 +26,7 @@ pushd ${target}
 #   --disable-authz-core --disable-authz-host --disable-authz-user --disable-authz-groupfile --disable-auth-basic \
 #   --disable-autoindex --disable-alias --disable-dir --disable-env --disable-filter --disable-headers \
 #   --disable-log_config --disable-mime --disable-reqtimeout --disable-setenvif --disable-status --disable-unixd --disable-version
-./configure --enable-mods-shared="few" \
+./configure --enable-mods-static="few" \
   --enable-brotli --enable-rewrite --enable-deflate --enable-logio --with-mpm=prefork --enable-http2 \
   --disable-unixd
 time make
