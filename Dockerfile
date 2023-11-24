@@ -6,6 +6,7 @@ WORKDIR /usr/src/app
 
 # libevent-dev : memcached
 # libsasl2-dev : memcached
+# apr : apache
 
 RUN dpkg -l \
  && apt-get update \
@@ -14,6 +15,7 @@ RUN dpkg -l \
   lbzip2 \
   libevent-dev \
   libsasl2-dev \
+  apr \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && a2dissite -q 000-default.conf \
