@@ -12,6 +12,7 @@ WORKDIR /usr/src/app
 # libjansson-dev : apache
 # libssl-dev : apache
 # libcurl4 : apache
+# libbrotli-dev : apache
 
 RUN dpkg -l \
  && apt-get update \
@@ -26,6 +27,7 @@ RUN dpkg -l \
   libjansson-dev \
   libssl-dev \
   libcurl4 \
+  libbrotli-dev \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && a2dissite -q 000-default.conf \
