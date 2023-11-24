@@ -26,7 +26,7 @@ ccache -s
 ccache -z
 ccache -M 500M
 
-# pushd /tmp
+pushd /tmp
 # curl -LO https://www.openssl.org/source/openssl-3.1.4.tar.gz
 # tar xf openssl-3.1.4.tar.gz
 # pushd openssl-3.1.4
