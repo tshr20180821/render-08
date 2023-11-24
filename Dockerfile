@@ -14,6 +14,7 @@ WORKDIR /usr/src/app
 # libcurl4 : apache
 # libbrotli-dev : apache
 # zlib1g-dev : apache
+# libnghttp2-dev : apache
 
 RUN dpkg -l \
  && apt-get update \
@@ -30,6 +31,7 @@ RUN dpkg -l \
   libcurl4 \
   libbrotli-dev \
   zlib1g-dev \
+  libnghttp2-dev \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && a2dissite -q 000-default.conf \
