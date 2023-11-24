@@ -26,29 +26,17 @@ ccache -s
 ccache -z
 ccache -M 500M
 
-pushd /tmp
+# pushd /tmp
+# curl -LO https://www.openssl.org/source/openssl-3.1.4.tar.gz
+# tar xf openssl-3.1.4.tar.gz
+# pushd openssl-3.1.4
+# ./Configure --help
+# ./Configure
+# make
+# make install_sw
+# popd
 
-curl -LO https://www.openssl.org/source/openssl-3.1.4.tar.gz
-
-tar xf openssl-3.1.4.tar.gz
-
-ls -lang
-
-pushd openssl-3.1.4
-
-ls -lang
-
-./Configure --help
-
-./Configure
-
-make
-
-make install_sw
-
-popd
-
-ccache -s
+# ccache -s
 
 # pushd /tmp
 # tar cf ccache_cache.tar.bz2 --use-compress-prog=lbzip2 ./ccache_cache
@@ -56,35 +44,23 @@ ccache -s
 # popd
 # rm -rf /tmp/ccache_cache
 
-# find / -name openssl.pc -print
+# export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig
+# curl -LO https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
+# tar xf libevent-2.1.12-stable.tar.gz
+# pushd libevent-2.1.12-stable
+# ./configure --help
+# ./configure --disable-shared
+# make
+# make install
+# popd
 
-export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig
+# ccache -s
 
-curl -LO https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
-
-tar xf libevent-2.1.12-stable.tar.gz
-
-ls -lang
-
-pushd libevent-2.1.12-stable
-
-./configure --help
-
-./configure --disable-shared
-
-make
-
-make install
-
-popd
-
-ccache -s
-
-pushd /tmp
-tar cf ccache_cache.tar.bz2 --use-compress-prog=lbzip2 ./ccache_cache
-mv ccache_cache.tar.bz2 /var/www/html/
-popd
-rm -rf /tmp/ccache_cache
+# pushd /tmp
+# tar cf ccache_cache.tar.bz2 --use-compress-prog=lbzip2 ./ccache_cache
+# mv ccache_cache.tar.bz2 /var/www/html/
+# popd
+# rm -rf /tmp/ccache_cache
 
 # curl -O https://ftp.gnu.org/gnu/gsasl/libgsasl-1.10.0.tar.gz
 # tar xf libgsasl-1.10.0.tar.gz
