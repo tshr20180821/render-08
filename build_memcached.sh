@@ -7,7 +7,7 @@ export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-fuse-ld=gold"
 
 export CCACHE_DIR=/tmp/ccache_cache
-export PATH="/tmp/usr/bin:${PATH}"
+# export PATH="/tmp/usr/bin:${PATH}"
 
 tar xf /tmp/ccache_cache.tar.bz2 -C /tmp
 ls -lang /tmp/ccache_cache
