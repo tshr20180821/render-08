@@ -4,6 +4,9 @@ SHELL ["/bin/bash", "-c"]
 
 WORKDIR /usr/src/app
 
+# libevent-dev : memcached
+# libsasl2-dev : memcached
+
 RUN dpkg -l \
  && apt-get update \
  && apt-get install -y --no-install-recommends \
