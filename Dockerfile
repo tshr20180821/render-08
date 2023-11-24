@@ -1,10 +1,12 @@
 FROM php:8.2-apache
 
+SHELL ["/bin/bash", "-c"]
+
 WORKDIR /usr/src/app
 
 RUN dpkg -l \
  && apt-get update \
- && apt-get install -y \
+ && apt-get install -y --no-install-recommends \
   ccache \
   lbzip2 \
   libevent-dev \
