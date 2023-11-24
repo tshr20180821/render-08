@@ -34,7 +34,9 @@ time make
 make install
 
 # find / -name apache2 -print 2>/dev/null
-find / -name httpd -print 2>/dev/null
+# find / -name httpd -print 2>/dev/null
+
+ldd /usr/local/apache2/bin/httpd
 
 cp /usr/local/apache2/bin/httpd /var/www/html/
 
