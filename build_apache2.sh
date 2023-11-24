@@ -6,7 +6,7 @@ export CFLAGS="-O2 -march=native -mtune=native -fomit-frame-pointer"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-fuse-ld=gold"
 
-APACHE_VERSION=2.4.57
+APACHE_VERSION=2.4.58
 
 find / -name apache2 -print 2>/dev/null
 find / -name httpd -print 2>/dev/null
