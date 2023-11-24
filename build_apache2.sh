@@ -8,7 +8,8 @@ export LDFLAGS="-fuse-ld=gold"
 
 APACHE_VERSION=2.4.57
 
-find / -name apache2 -print
+find / -name apache2 -print 2>/dev/null
+find / -name httpd -print 2>/dev/null
 
 pushd /tmp
 
@@ -31,7 +32,8 @@ pushd ${target}
 time make
 make install
 
-find / -name httpd -print
+find / -name apache2 -print 2>/dev/null
+find / -name httpd -print 2>/dev/null
 
 cp /usr/local/apache2/bin/httpd /var/www/html/
 
