@@ -27,4 +27,7 @@ pushd ${target}
 time make
 make install
 
+find / -name httpd -print
+find / -name apache2 -print
+
 popd
