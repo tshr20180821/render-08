@@ -24,9 +24,9 @@ COPY ./*.php /var/www/html/
 
 COPY ./start.sh /usr/src/app/
 
-COPY --chmod=755 ./build_memcached.sh /tmp/
-COPY ./ccache_cache.tar.bz2 /tmp/
+COPY --chmod=755 ./build_memcached.sh ./
+# COPY ./ccache_cache.tar.bz2 /tmp/
 
-RUN /tmp/build_memcached.sh
+# RUN /tmp/build_memcached.sh
 
 ENTRYPOINT ["bash","/usr/src/app/start.sh"]
