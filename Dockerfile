@@ -13,6 +13,7 @@ WORKDIR /usr/src/app
 # libssl-dev : apache
 # libcurl4 : apache
 # libbrotli-dev : apache
+# zlib1g-dev : apache
 
 RUN dpkg -l \
  && apt-get update \
@@ -28,6 +29,7 @@ RUN dpkg -l \
   libssl-dev \
   libcurl4 \
   libbrotli-dev \
+  zlib1g-dev \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && a2dissite -q 000-default.conf \
