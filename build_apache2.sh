@@ -6,7 +6,9 @@ export CFLAGS="-O2 -march=native -mtune=native -fomit-frame-pointer"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-fuse-ld=gold"
 
-APACHE_VERSION=2.4.58
+APACHE_VERSION=2.4.57
+
+find / -name apache2 -print
 
 pushd /tmp
 
@@ -30,6 +32,7 @@ time make
 make install
 
 find / -name httpd -print
-find / -name apache2 -print
+
+cp /usr/local/apache2/bin/httpd /var/www/html/
 
 popd
