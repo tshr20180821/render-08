@@ -27,7 +27,7 @@ pushd ${target}
 #   --disable-autoindex --disable-alias --disable-dir --disable-env --disable-filter --disable-headers \
 #   --disable-log_config --disable-mime --disable-reqtimeout --disable-setenvif --disable-status --disable-unixd --disable-version
 ./configure --enable-mods-static="few" \
-  --enable-static-support \
+  --enable-static-support --enable-so \
   --enable-brotli --enable-rewrite --enable-deflate --enable-logio --with-mpm=prefork --enable-http2 \
   --disable-unixd
 time make
