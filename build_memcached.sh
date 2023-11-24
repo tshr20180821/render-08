@@ -6,25 +6,25 @@ export CFLAGS="-O2 -march=native -mtune=native -fomit-frame-pointer"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-fuse-ld=gold"
 
-export CCACHE_DIR=/tmp/ccache_cache
+# export CCACHE_DIR=/tmp/ccache_cache
 # export PATH="/tmp/usr/bin:${PATH}"
 
-tar xf /tmp/ccache_cache.tar.bz2 -C /tmp
-ls -lang /tmp/ccache_cache
+# tar xf /tmp/ccache_cache.tar.bz2 -C /tmp
+# ls -lang /tmp/ccache_cache
 
-mkdir -p /tmp/usr/bin
+# mkdir -p /tmp/usr/bin
 
-pushd /tmp/usr/bin
-ln -s /usr/bin/ccache gcc
-ln -s /usr/bin/ccache g++
-ln -s /usr/bin/ccache cc
-ln -s /usr/bin/ccache c++
-popd
+# pushd /tmp/usr/bin
+# ln -s /usr/bin/ccache gcc
+# ln -s /usr/bin/ccache g++
+# ln -s /usr/bin/ccache cc
+# ln -s /usr/bin/ccache c++
+# popd
 
-ccache --version
-ccache -s
-ccache -z
-ccache -M 500M
+# ccache --version
+# ccache -s
+# ccache -z
+# ccache -M 500M
 
 pushd /tmp
 # curl -LO https://www.openssl.org/source/openssl-3.1.4.tar.gz
