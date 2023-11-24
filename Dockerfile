@@ -9,6 +9,9 @@ WORKDIR /usr/src/app
 # libapr1-dev : apache
 # libaprutil1-dev : apache
 # libpcre2-dev : apache
+# libjansson-dev : apache
+# libssl-dev : apache
+# libcurl4 : apache
 
 RUN dpkg -l \
  && apt-get update \
@@ -20,6 +23,9 @@ RUN dpkg -l \
   libapr1-dev \
   libaprutil1-dev \
   libpcre2-dev \
+  libjansson-dev \
+  libssl-dev \
+  libcurl4 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && a2dissite -q 000-default.conf \
