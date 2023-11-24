@@ -23,7 +23,7 @@ pushd ${target}
 #   --disable-authz-core --disable-authz-host --disable-authz-user --disable-authz-groupfile --disable-auth-basic \
 #   --disable-autoindex --disable-alias --disable-dir --disable-env --disable-filter --disable-headers \
 #   --disable-log_config --disable-mime --disable-reqtimeout --disable-setenvif --disable-status --disable-unixd --disable-version
-./configure
+./configure --enable-mods-shared="few" --enable-brotli --enable-file-cache
 time make
 make install
 
