@@ -8,6 +8,7 @@ WORKDIR /usr/src/app
 # libsasl2-dev : memcached
 # libapr1-dev : apache
 # libaprutil1-dev : apache
+# libpcre2-dev : apache
 
 RUN dpkg -l \
  && apt-get update \
@@ -18,6 +19,7 @@ RUN dpkg -l \
   libsasl2-dev \
   libapr1-dev \
   libaprutil1-dev \
+  libpcre2-dev \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && a2dissite -q 000-default.conf \
