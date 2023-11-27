@@ -4,8 +4,6 @@ SHELL ["/bin/bash", "-c"]
 
 WORKDIR /usr/src/app
 
-# libevent-dev : memcached
-# libsasl2-dev : memcached
 # libapr1-dev : apache
 # libaprutil1-dev : apache
 # libpcre2-dev : apache
@@ -21,8 +19,6 @@ RUN dpkg -l \
  && apt-get install -y --no-install-recommends \
   ccache \
   lbzip2 \
-  libevent-dev \
-  libsasl2-dev \
   libapr1-dev \
   libaprutil1-dev \
   libpcre2-dev \
