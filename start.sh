@@ -14,6 +14,8 @@ dpkg -i apache2-data_2.4.58-1_all.deb
 dpkg -i apache2-utils_2.4.58-1_amd64.deb
 dpkg -i apache2_2.4.58-1_amd64.deb
 
+apachectl -V
+
 echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_name.conf
 
 # for i in {1..60} ; do sleep 120s && ps aux && curl https://${RENDER_EXTERNAL_HOSTNAME}/ ; done &
