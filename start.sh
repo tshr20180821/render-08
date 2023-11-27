@@ -15,6 +15,7 @@ dpkg -i apache2-utils_2.4.58-1_amd64.deb
 dpkg -i apache2_2.4.58-1_amd64.deb
 
 apachectl -V
+/usr/sbin/apache2 -M
 
 echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_name.conf
 
