@@ -5,6 +5,7 @@ set -x
 # dpkg -l
 
 apachectl -V
+apachectl -M
 
 curl -O http://ftp.us.debian.org/debian/pool/main/a/apache2/apache2_2.4.58-1_amd64.deb \
  -O http://ftp.us.debian.org/debian/pool/main/a/apache2/apache2-bin_2.4.58-1_amd64.deb \
