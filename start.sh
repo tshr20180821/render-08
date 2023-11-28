@@ -9,10 +9,10 @@ curl -O http://ftp.us.debian.org/debian/pool/main/a/apache2/apache2_2.4.58-1_amd
  -O http://ftp.us.debian.org/debian/pool/main/a/apache2/apache2-data_2.4.58-1_all.deb \
  -O http://ftp.us.debian.org/debian/pool/main/a/apache2/apache2-utils_2.4.58-1_amd64.deb
  
-dpkg -i apache2-bin_2.4.58-1_amd64.deb
-dpkg -i apache2-data_2.4.58-1_all.deb
-dpkg -i apache2-utils_2.4.58-1_amd64.deb
-dpkg -i apache2_2.4.58-1_amd64.deb
+dpkg -i apache2-bin_2.4.58-1_amd64.deb apache2-data_2.4.58-1_all.deb apache2-data_2.4.58-1_all.deb apache2_2.4.58-1_amd64.deb
+# dpkg -i apache2-data_2.4.58-1_all.deb
+# dpkg -i apache2-data_2.4.58-1_all.deb
+# dpkg -i apache2_2.4.58-1_amd64.deb
 
 apachectl -V
 apachectl -M
