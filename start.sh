@@ -7,10 +7,10 @@ set -x
 apachectl -V
 apachectl -M
 
-curl -O http://ftp.us.debian.org/debian/pool/main/a/apache2/apache2_2.4.58-1_amd64.deb \
- -O http://ftp.us.debian.org/debian/pool/main/a/apache2/apache2-bin_2.4.58-1_amd64.deb \
- -O http://ftp.us.debian.org/debian/pool/main/a/apache2/apache2-data_2.4.58-1_all.deb \
- -O http://ftp.us.debian.org/debian/pool/main/a/apache2/apache2-utils_2.4.58-1_amd64.deb
+curl -O http://mirror.coganng.com/debian/pool/main/a/apache2/apache2_2.4.58-1_amd64.deb \
+ -O http://mirror.coganng.com/debian/pool/main/a/apache2/apache2-bin_2.4.58-1_amd64.deb \
+ -O http://mirror.coganng.com/debian/pool/main/a/apache2/apache2-data_2.4.58-1_all.deb \
+ -O http://mirror.coganng.com/debian/pool/main/a/apache2/apache2-utils_2.4.58-1_amd64.deb
  
 dpkg -i apache2-bin_2.4.58-1_amd64.deb apache2-data_2.4.58-1_all.deb apache2-utils_2.4.58-1_amd64.deb apache2_2.4.58-1_amd64.deb
 # dpkg -i apache2-data_2.4.58-1_all.deb
