@@ -21,7 +21,8 @@ dpkg -i apache2-bin_2.4.58-1_amd64.deb apache2-data_2.4.58-1_all.deb apache2-uti
 apachectl -V
 apachectl -M
 
-ps aux
+apt-get update
+apg-get --dry-run upgrade
 
 echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_name.conf
 
