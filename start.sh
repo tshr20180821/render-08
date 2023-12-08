@@ -5,6 +5,7 @@ set -x
 # dpkg -l
 
 docker-php-ext-install
+docker-php-ext-configure
 
 dragonfly --help
 dragonfly --helpfull
