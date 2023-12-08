@@ -4,6 +4,7 @@ SHELL ["/bin/bash", "-c"]
 
 WORKDIR /usr/src/app
 
+# iproute2 : ss
 # libapr1-dev : apache
 # libaprutil1-dev : apache
 # libpcre2-dev : apache
@@ -19,6 +20,7 @@ RUN dpkg -l \
  && apt-get update \
  && apt-get install -y --no-install-recommends \
   ccache \
+  iproute2 \
   lbzip2 \
   libapr1-dev \
   libaprutil1-dev \
