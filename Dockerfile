@@ -42,8 +42,6 @@ COPY ./php.ini ${PHP_INI_DIR}/
 COPY ./apache.conf /etc/apache2/sites-enabled/
 COPY ./*.php /var/www/html/
 
-COPY ./start.sh /usr/src/app/
-
 COPY --chmod=755 ./*.sh ./
 # COPY ./ccache_cache.tar.bz2 /tmp/
 
