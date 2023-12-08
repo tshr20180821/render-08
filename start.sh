@@ -4,13 +4,14 @@ set -x
 
 # dpkg -l
 
-docker-php-ext-install
-docker-php-ext-configure
+# docker-php-ext-install
+# docker-php-ext-configure
 
-dragonfly --help
-dragonfly --helpfull
+# dragonfly --help
+# dragonfly --helpfull
 export DFLY_PASSWORD=testpass999
-dragonfly --bind=127.0.0.1 --requirepass=${DFLY_PASSWORD} --version_check=false --memcached_port=11212 --tcp_keepalive=120 --port 6380 --colorlogtostderr &
+# dragonfly --bind=127.0.0.1 --requirepass=${DFLY_PASSWORD} --version_check=false --memcached_port=11212 --tcp_keepalive=120 --port 6380 --colorlogtostderr &
+dragonfly --bind=127.0.0.1 --requirepass=${DFLY_PASSWORD} --version_check=false --memcached_port=11212 --tcp_keepalive=120 --port 6380 --v &
 
 echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_name.conf
 
