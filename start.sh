@@ -20,5 +20,7 @@ echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_n
 # cp ./build_apache2.sh /tmp/
 # time /tmp/build_apache2.sh 2>&1 | tee -a /var/www/html/build_log.txt &
 
+sleep 5s && ss -anpt && ps aux &
+
 . /etc/apache2/envvars >/dev/null 2>&1
 exec /usr/sbin/apache2 -DFOREGROUND
