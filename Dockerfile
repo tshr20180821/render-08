@@ -13,8 +13,9 @@ WORKDIR /usr/src/app
 # libbrotli-dev : apache
 # zlib1g-dev : apache
 # libnghttp2-dev : apache
-
+# zstd  : dragonfly
 RUN dpkg -l \
+ && curl -sSLO https://github.com/dragonflydb/dragonfly/releases/download/v1.13.0/dragonfly_amd64.deb \
  && apt-get update \
  && apt-get install -y --no-install-recommends \
   ccache \
@@ -28,6 +29,8 @@ RUN dpkg -l \
   libbrotli-dev \
   zlib1g-dev \
   libnghttp2-dev \
+  zstd \
+ && dpkg -i dragonfly_amd64.deb \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && a2dissite -q 000-default.conf \
