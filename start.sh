@@ -2,29 +2,12 @@
 
 set -x
 
-dpkg -l
+# dpkg -l
 
-apachectl -V
-apachectl -M
+find /usr/local -type f -executable -exec ldd '{}' ';'
 
-curl -O http://mirror.coganng.com/debian/pool/main/a/apache2/apache2_2.4.58-1_amd64.deb \
- -O http://mirror.coganng.com/debian/pool/main/a/apache2/apache2-bin_2.4.58-1_amd64.deb \
- -O http://mirror.coganng.com/debian/pool/main/a/apache2/apache2-data_2.4.58-1_all.deb \
- -O http://mirror.coganng.com/debian/pool/main/a/apache2/apache2-utils_2.4.58-1_amd64.deb
- 
-dpkg -i apache2-bin_2.4.58-1_amd64.deb apache2-data_2.4.58-1_all.deb apache2-utils_2.4.58-1_amd64.deb apache2_2.4.58-1_amd64.deb
-# dpkg -i apache2-data_2.4.58-1_all.deb
-# dpkg -i apache2-data_2.4.58-1_all.deb
-# dpkg -i apache2-utils_2.4.58-1_amd64.deb
-# dpkg -i apache2_2.4.58-1_amd64.deb
-
-apachectl -V
-apachectl -M
-
-dpkg -l
-
-apt-get update
-apt-get --dry-run upgrade
+find /usr/local -type f -executable -exec ldd '{}' ';' | \
+  awk '/=>/ { so = $(NF-1); if (index(so, "/usr/local/") == 1) { next }; gsub("^/(usr/)?", "", so); print so }' | sort -u
 
 echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_name.conf
 
