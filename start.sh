@@ -4,6 +4,8 @@ set -x
 
 # dpkg -l
 
+docker-php-ext-install
+
 dragonfly --help
 dragonfly --helpfull
 export DFLY_PASSWORD=testpass999
