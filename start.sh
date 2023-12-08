@@ -4,6 +4,8 @@ set -x
 
 # dpkg -l
 
+ls -lang /usr/local/bin/
+
 find /usr/local -type f -executable -print
 
 find /usr/local -type f -executable -exec ldd '{}' ';'
