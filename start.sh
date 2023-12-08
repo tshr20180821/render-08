@@ -4,14 +4,10 @@ set -x
 
 # dpkg -l
 
-ls -lang /usr/local/bin/
-
-find /usr/local -type f -executable -print
-
-find /usr/local -type f -executable -exec ldd '{}' ';'
-
-find /usr/local -type f -executable -exec ldd '{}' ';' | \
-  awk '/=>/ { so = $(NF-1); if (index(so, "/usr/local/") == 1) { next }; gsub("^/(usr/)?", "", so); print so }' | sort -u
+dragonfly --help
+dragonfly --helpfull
+export DFLY_PASSWORD=testpass999
+dragonfly --bind=127.0.0.1 --requirepass --version_check=false --memcached_port=11212 --tcp_keepalive=120 --port 6380
 
 echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_name.conf
 
