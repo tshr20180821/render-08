@@ -15,7 +15,8 @@ WORKDIR /usr/src/app
 # zlib1g-dev : apache
 # libnghttp2-dev : apache
 # zstd  : dragonfly
-RUN dpkg -l \
+RUN set -x \
+ && dpkg -l \
  && curl -sSLO https://github.com/dragonflydb/dragonfly/releases/download/v1.13.0/dragonfly_amd64.deb \
  && apt-get update \
  && apt-get install -y --no-install-recommends \
