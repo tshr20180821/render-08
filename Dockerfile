@@ -1,8 +1,14 @@
 FROM php:8.2-apache
 
+EXPOSE 80
+
 SHELL ["/bin/bash", "-c"]
 
 WORKDIR /usr/src/app
+
+ENV CFLAGS="-O2 -march=native -mtune=native -fomit-frame-pointer"
+ENV CXXFLAGS="${CFLAGS}"
+ENV LDFLAGS="-fuse-ld=gold"
 
 # iproute2 : ss
 # libapr1-dev : apache
