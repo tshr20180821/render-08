@@ -33,7 +33,7 @@ RUN dpkg -l \
   libnghttp2-dev \
   zstd \
  && dpkg -i dragonfly_amd64.deb \
- && MAKEFLAGS="-j $(nproc)" pecl install redis >/dev/null \
+ && time MAKEFLAGS="-j $(nproc)" pecl install redis >/dev/null \
  && docker-php-ext-enable redis \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
