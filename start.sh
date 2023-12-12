@@ -20,15 +20,35 @@ echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_n
 # cp ./build_apache2.sh /tmp/
 # time /tmp/build_apache2.sh 2>&1 | tee -a /var/www/html/build_log.txt &
 
-curl -sS "${UPSTASH_REDIS_REST_URL}/set/foo/bar" \
-  -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}"
+# curl -sS "${UPSTASH_REDIS_REST_URL}/set/foo/bar" \
+#   -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}"
 
-curl -sS "${UPSTASH_REDIS_REST_URL}/get/foo" \
-  -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}"
-  
-curl -v "${UPSTASH_REDIS_REST_URL}/get/boo" \
-  -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}"
-  
+# curl -sS "${UPSTASH_REDIS_REST_URL}/get/foo" \
+#   -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}"
+
+# curl -v "${UPSTASH_REDIS_REST_URL}/get/boo" \
+#   -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}"
+
+apt-get -qq update \
+ && APT_RESULT=$(apt-get -s upgrade | grep upgraded | base64) \
+ && curl -sS -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
+     "${UPSTASH_REDIS_REST_URL}/set/APT_RESULT_${RENDER_EXTERNAL_HOSTNAME}/${APT_RESULT}"
+
+curl -sS "${UPSTASH_REDIS_REST_URL}/get/APT_RESULT_${RENDER_EXTERNAL_HOSTNAME}"
+
+#while true; \
+#  do for i in {1..144}; do \
+#    do for j in {1..10}; do sleep 60s && echo ${j}; done \
+#     && ss -anpt \
+#     && ps aux \
+#     && curl -sS -A "health check" -u ${BASIC_USER}:${BASIC_PASSWORD} https://${RENDER_EXTERNAL_HOSTNAME}/; \
+#  done \
+#   && apt-get -qq update \
+#   && APT_RESULT=$(apt-get -s upgrade | grep upgraded | base64) \
+#   && curl -X POST -sS -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
+#       "${UPSTASH_REDIS_REST_URL}/set/APT_RESULT_${RENDER_EXTERNAL_HOSTNAME}/${APT_RESULT}"; \
+#done &
+
 sleep 5s && ss -anpt && ps aux &
 
 . /etc/apache2/envvars >/dev/null 2>&1
