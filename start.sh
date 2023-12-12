@@ -43,26 +43,6 @@ apt-get -qq update \
 #curl -X POST -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
 # -d @/tmp/get_apt_result.txt "${UPSTASH_REDIS_REST_URL}"
 
-while true; \
-  do for i in {1..144}; do \
-    for j in {1..10}; do sleep 60s && echo "${j}"; done \
-     && ss -anpt \
-     && ps aux \
-     && curl -sS -A "health check" -u "${BASIC_USER}":"${BASIC_PASSWORD}" https://"${RENDER_EXTERNAL_HOSTNAME}"/; \
-  done \
-   && apt-get -qq update \
-   && APT_RESULT="$(date +'%Y-%m-%d %H:%M') $(apt-get -s upgrade | grep installed)" \
-   && { \
-       echo -n '["SET", "APT_RESULT_'; \
-       echo -n "${RENDER_EXTERNAL_HOSTNAME}"; \
-       echo -n '", "'; \
-       echo -n "${APT_RESULT}"; \
-       echo -n '"]'; \
-      } >/tmp/apt_result.txt \
-   && curl -X POST -sS -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
-       -d @/tmp/apt_result.txt "${UPSTASH_REDIS_REST_URL}"; \
-done &
-
 sleep 5s && ss -anpt && ps aux &
 
 . /etc/apache2/envvars >/dev/null 2>&1
