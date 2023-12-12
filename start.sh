@@ -31,7 +31,7 @@ echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_n
 
 
 apt-get -qq update \
- && APT_RESULT="$(date +'%Y-%m-%d %H:%M') $(apt-get -s upgrade | grep upgraded)" \
+ && APT_RESULT="$(date +'%Y-%m-%d %H:%M') $(apt-get -s upgrade | grep installed)" \
  && { \
      echo -n '["SET", "APT_RESULT_'; \
      echo -n "${RENDER_EXTERNAL_HOSTNAME}"; \
@@ -64,7 +64,7 @@ while true; \
      && curl -sS -A "health check" -u "${BASIC_USER}":"${BASIC_PASSWORD}" https://"${RENDER_EXTERNAL_HOSTNAME}"/; \
   done \
    && apt-get -qq update \
-   && APT_RESULT="$(date +'%Y-%m-%d %H:%M') $(apt-get -s upgrade | grep upgraded)" \
+   && APT_RESULT="$(date +'%Y-%m-%d %H:%M') $(apt-get -s upgrade | grep installed)" \
    && { \
        echo -n '["SET", "APT_RESULT_'; \
        echo -n "${RENDER_EXTERNAL_HOSTNAME}"; \
