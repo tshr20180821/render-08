@@ -29,12 +29,24 @@ echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_n
 # curl -v "${UPSTASH_REDIS_REST_URL}/get/boo" \
 #   -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}"
 
-apt-get -qq update \
- && APT_RESULT=$(apt-get -s upgrade | grep upgraded | base64) \
- && curl -sS -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
-     "${UPSTASH_REDIS_REST_URL}/set/APT_RESULT_${RENDER_EXTERNAL_HOSTNAME}/${APT_RESULT}"
+apt-get -qq update
+APT_RESULT="$(date +'%Y-%m-%d %H:%M') $(apt-get -s upgrade | grep upgraded | base64)"
 
-curl -sS "${UPSTASH_REDIS_REST_URL}/get/APT_RESULT_${RENDER_EXTERNAL_HOSTNAME}"
+{ \
+echo -n '["SET", "APT_RESULT_'; \
+echo -n "${RENDER_EXTERNAL_HOSTNAME}"; \
+echo -n '", "'; \
+echo -n "${APT_RESULT}"; \
+echo -n '"]'; \
+} >/tmp/apt_result.txt
+
+cat /tmp/apt_result.txt
+
+# curl -X POST -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
+# --data-raw @/tmp/apt_result.txt "${UPSTASH_REDIS_REST_URL}"
+
+# curl -sS -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
+#     "${UPSTASH_REDIS_REST_URL}/set/APT_RESULT_${RENDER_EXTERNAL_HOSTNAME}/${APT_RESULT}"
 
 #while true; \
 #  do for i in {1..144}; do \
