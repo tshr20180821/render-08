@@ -31,7 +31,7 @@ echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_n
 
 apt-get -qq update \
  && APT_RESULT="$(date +'%Y-%m-%d %H:%M') $(apt-get -s upgrade | grep installed)" \
- && REDIS_COMMAND="'"$(echo '["SET", "__KEY__", "__VALUE__"]' | sed "s/__KEY__/APT_RESULT_${RENDER_EXTERNAL_HOSTNAME}/" | sed "s/__VALUE__/${APT_RESULT}/")"'" \
+ && REDIS_COMMAND=$(echo '["SET", "__KEY__", "__VALUE__"]' | sed "s/__KEY__/APT_RESULT_${RENDER_EXTERNAL_HOSTNAME}/" | sed "s/__VALUE__/${APT_RESULT}/") \
  && curl -X POST -sS -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
      -d "${REDIS_COMMAND}" "${UPSTASH_REDIS_REST_URL}"
 
