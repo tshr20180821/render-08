@@ -30,7 +30,7 @@ echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_n
 #   -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}"
 
 apt-get -qq update
-APT_RESULT="$(date +'%Y-%m-%d %H:%M') $(apt-get -s upgrade | grep upgraded | base64)"
+APT_RESULT="$(date +'%Y-%m-%d %H:%M') $(apt-get -s upgrade | grep upgraded)"
 
 { \
 echo -n '["SET", "APT_RESULT_'; \
