@@ -40,7 +40,7 @@ apt-get -qq update \
      echo -n '"]'; \
     } >/tmp/apt_result.txt \
  && curl -X POST -sS -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
-     -d @/tmp/apt_result.txt "${UPSTASH_REDIS_REST_URL}" &
+     -d @/tmp/apt_result.txt "${UPSTASH_REDIS_REST_URL}"
 
 #{ \
 #echo -n '["GET", "APT_RESULT_'; \
@@ -50,6 +50,11 @@ apt-get -qq update \
 
 #curl -X POST -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
 # -d @/tmp/get_apt_result.txt "${UPSTASH_REDIS_REST_URL}"
+
+REDIS_COMMAND_TEMPLATE='["SET", "__KEY__", "__VALUE__"]'
+echo "${REDIS_COMMAND_TEMPLATE}"
+REDIS_COMMAND=$(echo "${REDIS_COMMAND_TEMPLATE}" | sed "s/__KEY__/APT_RESULT_${RENDER_EXTERNAL_HOSTNAME}/" | sed "s/__VALUE__/${APT_RESULT}/")
+echo ${REDIS_COMMAND}
 
 while true; \
   do for i in {1..144}; do \
