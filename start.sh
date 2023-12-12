@@ -29,18 +29,11 @@ echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_n
 # curl -v "${UPSTASH_REDIS_REST_URL}/get/boo" \
 #   -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}"
 
-
 apt-get -qq update \
  && APT_RESULT="$(date +'%Y-%m-%d %H:%M') $(apt-get -s upgrade | grep installed)" \
- && { \
-     echo -n '["SET", "APT_RESULT_'; \
-     echo -n "${RENDER_EXTERNAL_HOSTNAME}"; \
-     echo -n '", "'; \
-     echo -n "${APT_RESULT}"; \
-     echo -n '"]'; \
-    } >/tmp/apt_result.txt \
+ && REDIS_COMMAND="'$(echo '["SET", "__KEY__", "__VALUE__"]' | sed "s/__KEY__/APT_RESULT_${RENDER_EXTERNAL_HOSTNAME}/" | sed "s/__VALUE__/${APT_RESULT}/")'" \
  && curl -X POST -sS -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
-     -d @/tmp/apt_result.txt "${UPSTASH_REDIS_REST_URL}"
+     -d "${REDIS_COMMAND}" "${UPSTASH_REDIS_REST_URL}"
 
 #{ \
 #echo -n '["GET", "APT_RESULT_'; \
@@ -50,11 +43,6 @@ apt-get -qq update \
 
 #curl -X POST -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
 # -d @/tmp/get_apt_result.txt "${UPSTASH_REDIS_REST_URL}"
-
-REDIS_COMMAND_TEMPLATE='["SET", "__KEY__", "__VALUE__"]'
-echo "${REDIS_COMMAND_TEMPLATE}"
-REDIS_COMMAND=$(echo "${REDIS_COMMAND_TEMPLATE}" | sed "s/__KEY__/APT_RESULT_${RENDER_EXTERNAL_HOSTNAME}/" | sed "s/__VALUE__/${APT_RESULT}/")
-echo ${REDIS_COMMAND}
 
 while true; \
   do for i in {1..144}; do \
