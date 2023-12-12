@@ -53,10 +53,10 @@ apt-get -qq update \
 
 while true; \
   do for i in {1..144}; do \
-    do for j in {1..10}; do sleep 60s && echo ${j}; done \
+    for j in {1..10}; do sleep 60s && echo "${j}"; done \
      && ss -anpt \
      && ps aux \
-     && curl -sS -A "health check" -u ${BASIC_USER}:${BASIC_PASSWORD} https://${RENDER_EXTERNAL_HOSTNAME}/; \
+     && curl -sS -A "health check" -u "${BASIC_USER}":"${BASIC_PASSWORD}" https://"${RENDER_EXTERNAL_HOSTNAME}"/; \
   done \
    && apt-get -qq update \
    && APT_RESULT="$(date +'%Y-%m-%d %H:%M') $(apt-get -s upgrade | grep upgraded)" \
