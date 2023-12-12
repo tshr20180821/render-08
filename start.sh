@@ -43,7 +43,7 @@ echo -n '"]'; \
 cat /tmp/apt_result.txt
 
 curl -X POST -v -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
- --data-raw @/tmp/apt_result.txt "${UPSTASH_REDIS_REST_URL}"
+ -d @/tmp/apt_result.txt "${UPSTASH_REDIS_REST_URL}"
 
 { \
 echo -n '["GET", "APT_RESULT_'; \
@@ -51,8 +51,8 @@ echo -n "${RENDER_EXTERNAL_HOSTNAME}"; \
 echo -n '"]'; \
 } >/tmp/get_apt_result.txt
 
-# curl -X POST -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
-# --data-raw @/tmp/get_apt_result.txt "${UPSTASH_REDIS_REST_URL}"
+curl -X POST -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
+ -d @/tmp/get_apt_result.txt "${UPSTASH_REDIS_REST_URL}"
 
 # curl -sS -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
 #     "${UPSTASH_REDIS_REST_URL}/set/APT_RESULT_${RENDER_EXTERNAL_HOSTNAME}/${APT_RESULT}"
