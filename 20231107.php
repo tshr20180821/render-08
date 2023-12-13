@@ -11,7 +11,7 @@ error_log($port);
 $redis->connect('tlsv1.2://' . $hostname, $port);
 $redis->auth(getenv('UPSTASH_REDIS_PASSWORD'));
 
-error_log(redis->get('APT_RESULT_' . getenv('RENDER_EXTERNAL_HOSTNAME')));
-error_log(redis->get('USO800'));
+error_log($redis->get('APT_RESULT_' . getenv('RENDER_EXTERNAL_HOSTNAME')));
+error_log($redis->get('USO800'));
 
 error_log('FINISH');
