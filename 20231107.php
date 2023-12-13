@@ -2,25 +2,16 @@
 
 error_log('START');
 
-$m = new Memcached();
-$m->setOption(Memcached::OPT_BINARY_PROTOCOL, true);
-error_log($m->getResultCode());
-error_log($m->getResultMessage());
+//$redis = new Redis();
 
-$m->setSaslAuthData('memcached', getenv('RENDER_EXTERNAL_HOSTNAME'));
-$m->addServer('127.0.0.1', 11211);
-error_log($m->getResultCode());
-error_log($m->getResultMessage());
+$hostname = parse_url(getenv('UPSTASH_REDIS_REST_URL'),  PHP_URL_HOST);
+error_log($hostname);
+preg_match('/(\d+)/', $hostname, $matches, PREG_OFFSET_CAPTURE);
+error_log(print_r($matches, true));
+//$redis->connect('tlsv1.2://' . $hostname, $port);
+//$redis->auth(getenv('UPSTASH_REDIS_REST_TOKEN'));
 
-error_log('DATA2 : ' . $m->get('KEY_B'));
+//print_r($redis->get("foo"));
 
-$m->set('KEY_A', 'DATA_A');
-error_log($m->getResultCode());
-error_log($m->getResultMessage());
-error_log('DATA : ' . $m->get('KEY_A'));
-
-echo $m->get('KEY_A');
-error_log($m->getResultCode());
-error_log($m->getResultMessage());
 
 error_log('FINISH');
