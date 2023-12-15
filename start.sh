@@ -20,28 +20,11 @@ echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_n
 # cp ./build_apache2.sh /tmp/
 # time /tmp/build_apache2.sh 2>&1 | tee -a /var/www/html/build_log.txt &
 
-# curl -sS "${UPSTASH_REDIS_REST_URL}/set/foo/bar" \
-#   -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}"
-
-# curl -sS "${UPSTASH_REDIS_REST_URL}/get/foo" \
-#   -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}"
-
-# curl -v "${UPSTASH_REDIS_REST_URL}/get/boo" \
-#   -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}"
-
-apt-get -qq update \
- && curl -X POST -sS -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
-     -d "$(echo -n '["SET", "__KEY__", "__VALUE__", "EX", "86400"]' | sed "s/__KEY__/APT_RESULT_${RENDER_EXTERNAL_HOSTNAME}/" | sed "s/__VALUE__/$(date +'%Y-%m-%d %H:%M') $(apt-get -s upgrade | grep installed)/")" \
-     "${UPSTASH_REDIS_REST_URL}"
-
-#{ \
-#echo -n '["GET", "APT_RESULT_'; \
-#echo -n "${RENDER_EXTERNAL_HOSTNAME}"; \
-#echo -n '"]'; \
-#} >/tmp/get_apt_result.txt
-
-#curl -X POST -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN}" \
-# -d @/tmp/get_apt_result.txt "${UPSTASH_REDIS_REST_URL}"
+curl -sSLO https://github.com/tshr20180821/render-04/raw/main/Dockerfile
+curl -sSLO https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64
+chomod +x ./hadolint-Linux-x86_64
+./hadolint-Linux-x86_64 ./Dockerfile
+rm ./hadolint-Linux-x86_64
 
 sleep 5s && ss -anpt && ps aux &
 
