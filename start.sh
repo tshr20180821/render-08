@@ -22,7 +22,7 @@ echo ServerName ${RENDER_EXTERNAL_HOSTNAME} >/etc/apache2/sites-enabled/server_n
 
 curl -sSLO https://github.com/tshr20180821/render-04/raw/main/Dockerfile
 curl -sSLO https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64
-chomod +x ./hadolint-Linux-x86_64
+chmod +x ./hadolint-Linux-x86_64
 ./hadolint-Linux-x86_64 ./Dockerfile
 rm ./hadolint-Linux-x86_64
 
