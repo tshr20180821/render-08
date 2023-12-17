@@ -54,7 +54,7 @@ ls -lang /etc/apt/
 
 touch /var/www/html/backports_results.txt
 chmod 644 /var/www/html/backports_results.txt
-dpkg -l | tail -n +6 | awk '{print $2}' | awk -F: '{print $1}' | xargs -i ./backports.sh {} | tee -a /var/www/html/backports_results.txt &
+dpkg -l | tail -n +6 | awk '{print $2}' | awk -F: '{print $1}' | xargs -i ./backports.sh {} /var/www/html/backports_results.txt && cat /var/www/html/backports_results.txt &
 
 . /etc/apache2/envvars >/dev/null 2>&1
 exec /usr/sbin/apache2 -DFOREGROUND
