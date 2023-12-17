@@ -41,5 +41,7 @@ ls -lang /etc/apache2/sites-enabled/
 
 cat /etc/apache2/mods-available/deflate.conf
 
+find /etc/apache2/mods-available/ -name *.conf -exec cat '{}' ';'
+
 . /etc/apache2/envvars >/dev/null 2>&1
 exec /usr/sbin/apache2 -DFOREGROUND
