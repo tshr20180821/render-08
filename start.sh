@@ -39,7 +39,7 @@ ls -lang /etc/apache2/conf-enabled/
 ls -lang /etc/apache2/mods-enabled/
 ls -lang /etc/apache2/sites-enabled/
 
-cat /etc/apache2/sites-available/000-default.conf
+cat /etc/apache2/mods-available/deflate.conf
 
 . /etc/apache2/envvars >/dev/null 2>&1
 exec /usr/sbin/apache2 -DFOREGROUND
