@@ -43,11 +43,11 @@ cat /etc/apache2/mods-available/deflate.conf
 
 find /etc/apache2/mods-available/ -name *.conf -exec cat '{}' ';'
 
-curl -sS https://packages.debian.org/bookworm/apache2 | grep '<h1>' | grep 'apache2'
-curl -sS https://packages.debian.org/bookworm-updates/apache2 | grep '<h1>' | grep 'apache2'
-curl -sS https://packages.debian.org/bookworm-backports/apache2 | grep '<h1>' | grep 'apache2'
-curl -sS https://packages.debian.org/trixie/apache2 | grep '<h1>' | grep 'apache2'
-curl -sS https://packages.debian.org/sid/apache2 | grep '<h1>' | grep 'apache2'
+curl -sS https://packages.debian.org/bookworm/apache2 | grep '<h1>' | grep 'apache2' | cut -c 5-
+curl -sS https://packages.debian.org/bookworm-updates/apache2 | grep '<h1>' | grep 'apache2' | cut -c 5-
+curl -sS https://packages.debian.org/bookworm-backports/apache2 | grep '<h1>' | grep 'apache2' | cut -c 5-
+curl -sS https://packages.debian.org/trixie/apache2 | grep '<h1>' | grep 'apache2' | cut -c 5-
+curl -sS https://packages.debian.org/sid/apache2 | grep '<h1>' | grep 'apache2' | cut -c 5-
 
 . /etc/apache2/envvars >/dev/null 2>&1
 exec /usr/sbin/apache2 -DFOREGROUND
