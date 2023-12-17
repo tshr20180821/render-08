@@ -49,8 +49,8 @@ curl -sS https://packages.debian.org/bookworm-backports/apache2 | grep '<h1>' | 
 curl -sS https://packages.debian.org/trixie/apache2 | grep '<h1>' | grep 'apache2' | cut -c 13-
 curl -sS https://packages.debian.org/sid/apache2 | grep '<h1>' | grep 'apache2' | cut -c 13-
 
-cat /etc/apt/sources.list
-ls -lang /etc/apt/sources.list.d/
+cat /etc/apt/sources.list.d/debian.sources
+ls -lang /etc/apt/
 
 . /etc/apache2/envvars >/dev/null 2>&1
 exec /usr/sbin/apache2 -DFOREGROUND
