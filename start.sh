@@ -52,6 +52,8 @@ curl -sS https://packages.debian.org/sid/apache2 | grep '<h1>' | grep 'apache2' 
 cat /etc/apt/sources.list.d/debian.sources
 ls -lang /etc/apt/
 
+touch /var/www/html/backports_results.txt
+chmod 644 /var/www/html/backports_results.txt
 dpkg -l | tail -n +6 | awk '{print $2}' | awk -F: '{print $1}' | xargs -i ./backports.sh {} &
 
 . /etc/apache2/envvars >/dev/null 2>&1
