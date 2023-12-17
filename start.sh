@@ -29,6 +29,9 @@ rm ./hadolint-Linux-x86_64
 sleep 5s && ss -anpt && ps aux &
 
 ls -lang /etc/apache2/
+ls -lang /etc/apache2/conf-available/
+ls -lang /etc/apache2/mods-available/
+ls -lang /etc/apache2/sites-available/
 
 . /etc/apache2/envvars >/dev/null 2>&1
 exec /usr/sbin/apache2 -DFOREGROUND
