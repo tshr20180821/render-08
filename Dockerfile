@@ -1,4 +1,4 @@
-FROM php:8.2-apache
+FROM php:8.3-apache
 
 EXPOSE 80
 
@@ -11,15 +11,6 @@ ENV CXXFLAGS="${CFLAGS}"
 ENV LDFLAGS="-fuse-ld=gold"
 
 # iproute2 : ss
-# libapr1-dev : apache
-# libaprutil1-dev : apache
-# libpcre2-dev : apache
-# libjansson-dev : apache
-# libssl-dev : apache
-# libcurl4 : apache
-# libbrotli-dev : apache
-# zlib1g-dev : apache
-# libnghttp2-dev : apache
 # zstd  : dragonfly
 RUN set -x \
  && dpkg -l \
@@ -28,16 +19,6 @@ RUN set -x \
  && apt-get install -y --no-install-recommends \
   ccache \
   iproute2 \
-  lbzip2 \
-  libapr1-dev \
-  libaprutil1-dev \
-  libpcre2-dev \
-  libjansson-dev \
-  libssl-dev \
-  libcurl4 \
-  libbrotli-dev \
-  zlib1g-dev \
-  libnghttp2-dev \
   zstd \
  && dpkg -i dragonfly_amd64.deb \
  && time MAKEFLAGS="-j $(nproc)" pecl install redis >/dev/null \
