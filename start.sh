@@ -43,5 +43,12 @@ cat /etc/apache2/mods-available/deflate.conf
 
 find /etc/apache2/mods-available/ -name *.conf -exec cat '{}' ';'
 
+curl https://packages.debian.org/bookworm/apache2 | grep '<h1>'
+curl https://packages.debian.org/bookworm-updates/apache2 | grep '<h1>'
+curl https://packages.debian.org/bookworm-backports/apache2 | grep '<h1>'
+curl https://packages.debian.org/trixie/apache2 | grep '<h1>'
+curl https://packages.debian.org/sid/apache2 | grep '<h1>'
+
+
 . /etc/apache2/envvars >/dev/null 2>&1
 exec /usr/sbin/apache2 -DFOREGROUND
