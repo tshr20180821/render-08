@@ -2,6 +2,12 @@
 
 set -x
 
+check_backports() {
+  echo "backports check ${1}" | tee -a "${2}"
+  curl -sS -m 10 "https://packages.debian.org/bookworm-backports/${1}" 2>>"${2}" | grep '<h1>' | grep "${1}" | cut -c 14- | tee -a "${2}"
+  sleep 2s
+}
+
 # dpkg -l
 
 # docker-php-ext-install
@@ -54,7 +60,7 @@ ls -lang /etc/apt/
 
 touch /var/www/html/backports_results.txt
 chmod 644 /var/www/html/backports_results.txt
-dpkg -l | tail -n +6 | awk '{print $2}' | awk -F: '{print $1}' | xargs -i ./backports.sh {} /var/www/html/backports_results.txt && cat /var/www/html/backports_results.txt &
+dpkg -l | tail -n +6 | awk '{print $2}' | awk -F: '{print $1}' | xargs -i check_backports {} /var/www/html/backports_results.txt && cat /var/www/html/backports_results.txt &
 
 . /etc/apache2/envvars >/dev/null 2>&1
 exec /usr/sbin/apache2 -DFOREGROUND
